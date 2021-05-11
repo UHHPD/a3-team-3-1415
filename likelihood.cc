@@ -19,7 +19,9 @@ double prob(std::vector<int> daten, double mu){
 int main() {
     using namespace std;
 
-
+    ofstream fout1("likelihood.txt");
+    ofstream fout2("nll.txt");
+    ofstream fout3("deltanll.txt");
     ifstream fin1("datensumme.txt");
     int n_i;
     std::vector<int> daten;
@@ -27,7 +29,18 @@ int main() {
         fin1 >> n_i;
         daten.push_back(n_i);
     }
-    
+
     std::cout << "Likelihood(3.11538): " << prob(daten,3.11538) << std::endl;
+    
+    double g = 0;
+    for(int i = 0; i < 61; ++i){
+      fout1 << g << " " << prob(daten,g) << std::endl;
+      fout2 << g << " " << -2*log(prob(daten,g)) << std::endl;
+      fout3 << g << " " << -2*(log(prob(daten,g))-log(prob(daten,3.11538))) << std::endl;
+      g += 0.1;
+    }
     fin1.close();
+    fout1.close();
+    fout2.close();
+    fout3.close();
 }
