@@ -44,7 +44,7 @@ int main() {
     lambda = prob(daten, 3.11538)/prob2(daten);
     z = (-2*log(lambda)-233)/sqrt(466);
     std::cout << "Likelihood(3.11538): " << prob(daten,3.11538) << std::endl;
-    std::cout /*<< "Likelihood-Quotient: "*/ << lambda << std::endl;
+    std::cout /*<< "Likelihood-Quotient: "*/ << -2*log(lambda) << std::endl;
     //std::cout << "-2ln lambda: " << -2*log(lambda) << std::endl;
     std::cout /*<< "Relative Abweichung vom Likelihood-Quotienten: "*/ << z << std::endl;
     
